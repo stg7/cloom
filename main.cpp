@@ -34,14 +34,14 @@ void int_example() {
     cloom.insert(123);
     cloom.has(123);
 
-    auto test_int = 123
+    auto test_int = 123;
     if (cloom.has(test_int)) {
         std::cout << test_int << " in filter" << std::endl;
     } else {
         std::cout << test_int << " NOT in filter" << std::endl;
     }
 
-    auto test_int = 321
+    test_int = 321;
     if (cloom.has(test_int)) {
         std::cout << test_int << " in filter" << std::endl;
     } else {
@@ -54,14 +54,14 @@ void str_example() {
     Cloom<std::string> cloom_str;
     cloom_str.insert(std::string("hello"));
 
-    auto test_str = std::string("hello")
+    auto test_str = std::string("hello");
     if (cloom_str.has(test_str)) {
         std::cout << test_str << " in filter" << std::endl;
     } else {
         std::cout << test_str << " NOT in filter" << std::endl;
     }
 
-    auto test_str = std::string("holla")
+    test_str = std::string("holla");
     if (cloom_str.has(test_str)) {
         std::cout << test_str << " in filter" << std::endl;
     } else {
