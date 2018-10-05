@@ -38,6 +38,7 @@ class Cloom {
     std::hash<T> _hash_function;
     size_t _filter_size;
     std::vector<short> _counts;
+    int _hash_iterations;
 
  public:
     Cloom(): Cloom(100) {}
@@ -52,6 +53,7 @@ class Cloom {
 #endif
         _hash_function = std::hash<T>{};
         _counts.reserve(_filter_size);
+        _hash_iterations = 3;
     }
     void insert(const T element) {
         std::size_t hash_value = _hash_function(element) % _filter_size;
@@ -60,7 +62,7 @@ class Cloom {
         std::cout << "insert element " << element << std::endl;
         std::cout << "hash value: " << hash_value << std::endl;
 #endif
-        for(int k = 0; k < 3; k++) {
+        for(int k = 0; k < _hash_iterations; k++) {
             std::size_t position = hash_value;
             _counts[position] ++;
             hash_value *=2;
@@ -72,7 +74,21 @@ class Cloom {
 #ifdef DEBUG
         std::cout << "has element " << element << std::endl;
 #endif
-        return true;
+        std::size_t hash_value = _hash_function(element) % _filter_size;
+        int checks = 0;
+        // generate some hash values
+        for(int k = 0; k < _hash_iterations; k++) {
+            std::size_t position = hash_value;
+            if (_counts[position] > 0) {
+                checks ++;
+            }
+            hash_value *= 2;
+            hash_value += k;
+            hash_value %= _filter_size;
+        }
+
+        // element is stored if for each hash a count was registered
+        return checks == _hash_iterations;
     }
 };
 
