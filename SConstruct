@@ -56,7 +56,7 @@ else:
     env.Append(CXXFLAGS=['-march=native']) # use native architecture
     env.Append(CCFLAGS=['-O3']) # 03
 
-    # loop unrolling and link time optimization, options should be testet
+    # loop unrolling and link time optimization, options should be tested
     #env.Append(CCFLAGS=['-funroll-loops', '-flto', '-fwhole-program'])
 
 sources = ["main.cpp"]
