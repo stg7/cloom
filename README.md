@@ -1,10 +1,10 @@
 # cloom
 Cloom is a header only c++ counting bloom filter implementation.
 You need to know that bloom filters are probabilistic datastructures,
-a check if a <value> is stored will result in the following answers
+a check if a `value` is stored will result in the following answers
 
-* yes: the <value> is probably stored
-* no: the <value> is definitly not stored
+* yes: the `value` is probably stored
+* no: the `value` is definitly not stored
 
 Counting bloom filters use more main memory in contrast to pure bloom filters,
 however with counting bloom filteres it is also possible to remove values from the filter.
