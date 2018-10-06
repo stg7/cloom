@@ -23,7 +23,7 @@ run `scons` to build the example, now you can run
 # 123 in filter
 # remove 123
 # 123 NOT in filter
-...
+# ...
 ```
 
 
