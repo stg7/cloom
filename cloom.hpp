@@ -105,7 +105,7 @@ class Cloom {
 #endif
         std::size_t hash_value = _get_hash_value(element);
         int checks = 0;
-        // generate some hash values
+        // generate hash values
         for(int k = 0; k < _hash_iterations; k++) {
             std::size_t position = hash_value;
             if (_counts[position] > 0) {
