@@ -32,17 +32,25 @@ You can simply include in your c++ application the header file:
 ```cpp
 #include "cloom.hpp"
 ...
-
+// and create an instance
 Cloom<int> cl(123);
 
+// insert values
 cl.insert(123);
 
+// check if they are probably stored
 if (cl.has(123)) {
     // probably 123 is stored in the bloom filter
 }
 
-
+// and remove them
 cl.remove(123);
+
+// or store to a file
+cl.store("test.cl");
+
+// or load from a file
+cl.load("test.cl");
 
 ```
 
