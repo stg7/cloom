@@ -15,14 +15,21 @@ however with counting bloom filteres it is also possible to remove values from t
 
 ## example
 run `scons` to build the example, now you can run
-```
+```bash
 ./cloom
+# output
+# example cloom usage
+# insert 123
+# 123 in filter
+# remove 123
+# 123 NOT in filter
+...
 ```
 
 
 ## usage
 You can simply include in your c++ application the header file:
-```
+```cpp
 #include "cloom.hpp"
 ...
 
