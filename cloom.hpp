@@ -56,7 +56,7 @@ class Cloom {
         \param filter_size size of the used filter,
             next larger prime number will be used
     **/
-    Cloom(size_t filter_size): _filter_size(filter_size) {
+    Cloom(const size_t filter_size): _filter_size(filter_size) {
         _filter_size = utils::primes::larger_prime(filter_size);
 #ifdef DEBUG
         std::cout << "create filter: filter_size: " << _filter_size << std::endl;

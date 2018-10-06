@@ -47,3 +47,11 @@ cl.remove(123);
 ```
 
 See `main.cpp` for more examples.
+
+
+## debug
+For a debug build run
+```
+scons debug=1
+```
+
