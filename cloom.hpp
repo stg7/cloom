@@ -126,7 +126,7 @@ class Cloom {
     /**
         store bloom filter to disk
     **/
-    void store(const auto filename) {
+    void store(const char* filename) {
         std::ofstream file;
         file.open(filename, std::ios::out | std::ios::trunc | std::ios::binary);
         file << _filter_size;
@@ -140,7 +140,7 @@ class Cloom {
     /**
         load bloom filter from disk
     **/
-    void load(const std::string filename) {
+    void load(const char* filename) {
         std::ifstream file;
         file.open(filename, std::ios::in | std::ios::trunc | std::ios::binary);
         file >> _filter_size;

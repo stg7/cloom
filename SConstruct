@@ -53,7 +53,7 @@ if ARGUMENTS.get('debug', 0) != 0:
     # "no" optimization
     env.Append(CCFLAGS=['-O0'])
 else:
-    env.Append(CXXFLAGS=['-march=native']) # use native architecture
+    env.Append(CXXFLAGS=['-march=native', '-mavx2']) # use native architecture
     env.Append(CCFLAGS=['-O3']) # 03
 
     # loop unrolling and link time optimization, options should be tested
