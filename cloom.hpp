@@ -76,7 +76,7 @@ class Cloom {
         for(int k = 0; k < _hash_iterations; k++) {
             std::size_t position = hash_value;
             _counts[position] ++;
-            hash_value *=2;
+            hash_value *= 2;
             hash_value += k;
             hash_value %= _filter_size;
         }
@@ -93,7 +93,7 @@ class Cloom {
             if (_counts[position] > 0) {
                 _counts[position] --;
             }
-            hash_value *=2;
+            hash_value *= 2;
             hash_value += k;
             hash_value %= _filter_size;
         }
