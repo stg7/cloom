@@ -116,7 +116,8 @@ class Cloom {
             hash_value %= _filter_size;
         }
 
-        // element is stored if for each hash a count was registered
+        // element is stored if foreach calculated hash step
+        //   a count was registered
         return checks == _hash_iterations;
     }
 
