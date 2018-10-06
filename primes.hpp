@@ -5,7 +5,13 @@
 #include <cmath>
 
 namespace utils {
+    /**
+        collection of helper methods for prime numbers
+    **/
     namespace primes {
+        /**
+            check if number is prime
+        **/
         inline unsigned long is_prime(unsigned long s) {
             if (s < 2) {
                 return false;
@@ -27,6 +33,10 @@ namespace utils {
             }
             return true;
         }
+
+        /**
+            return prime that <=s
+        **/
         inline unsigned long lesser_prime(unsigned long s) {
             if (s <= 2) {
                 return 2;
@@ -42,6 +52,9 @@ namespace utils {
             return s;
         }
 
+        /**
+            return prime that is >= s
+        **/
         inline unsigned long larger_prime(unsigned long s) {
             if (s <= 2) {
                 return 2;
