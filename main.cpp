@@ -1,5 +1,5 @@
 /**
-    c++ bloom filter implementation,
+    c++ counting bloom filter implementation,
     example file
 
     \author Steve Göring
@@ -29,44 +29,78 @@
 
 #include "cloom.hpp"
 
+template<typename T>
+void test_has(T X, Cloom<T>& C) {
+    if (C.has(X)) {
+        std::cout << X << " in filter" << std::endl;
+    } else {
+        std::cout << X << " NOT in filter" << std::endl;
+    }
+}
+
+template<typename T>
+void p(T x) {
+    std::cout << x << std::endl;
+}
+
 void int_example() {
     Cloom<int> cloom;
+    p("insert 123");
     cloom.insert(123);
-    cloom.has(123);
 
     auto test_int = 123;
-    if (cloom.has(test_int)) {
-        std::cout << test_int << " in filter" << std::endl;
-    } else {
-        std::cout << test_int << " NOT in filter" << std::endl;
-    }
+    test_has(test_int, cloom);
+
+    p("remove 123");
+    cloom.remove(test_int);
+    test_has(test_int, cloom);
 
     test_int = 321;
-    if (cloom.has(test_int)) {
-        std::cout << test_int << " in filter" << std::endl;
-    } else {
-        std::cout << test_int << " NOT in filter" << std::endl;
-    }
+    test_has(test_int, cloom);
+
+    cloom.remove(test_int);
+    test_has(test_int, cloom);
 
 }
 
 void str_example() {
-    Cloom<std::string> cloom_str;
-    cloom_str.insert(std::string("hello"));
+    Cloom<std::string> cloom;
+    p("insert hello");
+    cloom.insert(std::string("hello"));
 
     auto test_str = std::string("hello");
-    if (cloom_str.has(test_str)) {
-        std::cout << test_str << " in filter" << std::endl;
-    } else {
-        std::cout << test_str << " NOT in filter" << std::endl;
-    }
+    test_has(test_str, cloom);
+
+    p("remove hello");
+    cloom.remove(test_str);
+    test_has(test_str, cloom);
 
     test_str = std::string("holla");
-    if (cloom_str.has(test_str)) {
-        std::cout << test_str << " in filter" << std::endl;
-    } else {
-        std::cout << test_str << " NOT in filter" << std::endl;
+    test_has(test_str, cloom);
+
+    cloom.remove(test_str);
+    test_has(test_str, cloom);
+}
+
+void storage_example() {
+    const char* filename = "storage.cloom";
+    {
+    Cloom<std::string> cl;
+    cl.insert(std::string("hello"));
+    cl.insert(std::string("world"));
+
+    cl.store(filename);
     }
+    {
+    Cloom<std::string> cl;
+    cl.load(filename);
+    cl.insert(std::string("abc"));
+
+    test_has(std::string("hello"), cl);
+    test_has(std::string("world"), cl);
+    test_has(std::string("abc"), cl);
+    }
+
 }
 
 /**
@@ -78,5 +112,6 @@ int main(int argc, const char* argv[]) {
     int_example();
     str_example();
 
+    storage_example();
     return 0;
 }
